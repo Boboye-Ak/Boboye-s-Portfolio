@@ -41,6 +41,7 @@ module.exports.login_post=(req, res)=>{
 
 module.exports.addproject_post=async (req, res)=>{
     const {name, link, gitLink, descr}=req.body
+    console.log(name, link, gitLink, descr)
     const projects=await Project.find({})
     const id=projects.length+1
     const image= await cloudinary.uploader.upload(req.file.path)

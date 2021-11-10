@@ -1,7 +1,7 @@
 <%-include("./partials/header") %>
 <div class="container">
     <h1 class="page-header1">Add Project</h1>
-    <form class="form">
+    <form class="form" id="projectform">
         <input type="text" name="projectName" class="projectName" placeholder="Project Name"><br />
         <input type="text" name="projectLink" class="projectLink" placeholder="Project Live Link"><br />
         <input type="text" name="gitLink" class="gitLink" placeholder="Git-Hub Link"><br />
@@ -20,8 +20,9 @@
         let projectscreenshot=document.querySelector(".screenshot")
         let description=document.querySelector(".description")
         let githubLink=document.querySelector(".gitLink")
-        let form=document.querySelector(".myform")
+        let form=document.querySelector("#projectform")
         let message=document.querySelector(".message")
+        
 
         form.addEventListener("submit", async (e)=>{
             e.preventDefault()
@@ -36,6 +37,7 @@
             formData.append("myimage", myimage)
             formData.append("gitLink", gitLink)
             formData.append("descr", descr)
+            
 
             let res=await fetch("/addproject", {
                 body:formData,
