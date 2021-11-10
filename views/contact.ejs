@@ -1,0 +1,72 @@
+<%-include("./partials/header") %>
+<div class="container">
+     <h1 class="page-header1">Contact</h1>
+     <div class="social-icons">
+          <a href="mailto: boboye771@gmail.com">
+               <img src="./gmail icon.png" class="contact-icon">
+          </a>
+          <a href="https://twitter.com/Boboye_Ak?t=u7PCZMVeYgfOgrrCcGY3TA&s=09">
+               <img src="./twitter icon.png" class="contact-icon">
+          </a>
+          <a href="https://github.com/Boboye-Ak">
+               <img src="./githublogo.png" class="contact-icon">
+
+          </a>
+     </div>
+     <form class="form" id="messageform">
+          <input type="text" placeholder="Name" name="name" id="name"><br/>
+          <input type="text" placeholder="Email Address" name="email" id="email"><br />
+          <textarea placeholder="Enter Message Here" id="message"></textarea>
+          <div class="error"></div><br />
+          <input type="submit" placeholder="Send Message" name="message">
+          <div class="success message"></div>
+
+     </form>
+
+</div>
+
+<script>
+     let nametag=document.querySelector("#name")
+     let emailtag=document.querySelector("#email")
+     let messagetag=document.querySelector("#message")
+     let form=document.querySelector("#messageform")
+     let error=document.querySelector(".error")
+     let success=document.querySelector(".success")
+     form.addEventListener("submit", async(e)=>{
+          e.preventDefault()
+          let name=nametag.value
+          let email=emailtag.value
+          let message=messagetag.value
+          if(name && email && message){
+               const res = await fetch("/contact", {
+                    method: "POST",
+                    body: JSON.stringify({ name: name, email: email, message: message }),
+                    headers:{"Content-type":"application/json"}
+               })
+
+               const data=await res.json()
+               if (data.success){
+                    success.textContent="Message sent successfully."
+               }
+
+               else{
+                    error.textContent = "Please fill all fields correctly"
+               }
+               
+          }
+
+          else{
+               error.textContent="Please fill all fields correctly"
+
+          }
+          
+     })
+</script>
+
+<script>
+     const active = document.querySelector('a[href="/contact"]')
+     active.className += " active"
+</script>
+
+    
+<%-include("./partials/footer") %>

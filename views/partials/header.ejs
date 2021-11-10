@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Boboye's Portfolio</title>
+    <link href="./index.css" rel="stylesheet">
+    <link rel="icon" href="/marvin the paranoid android avi.jpg" type="image/png">
+</head>
+
+<body>
+    <div class="container" >
+        <div>
+            <nav>
+                <div class="topnav" id="myTopnav">
+                    
+                        <a href="/intro">Intro</a>
+                    
+                    
+                        <a href="/about">About Me</a>
+                    
+                    
+                        <a href="/portfolio">Portfolio</a>
+                    
+                    
+                        <a href="/contact">Contact Me</a>
+                    
+                    
+                        <a href="/addproject">Add Project <span title="Requires Admin privileges">&#128274;</span></a>
+                    
+                    
+                        <a href="/deleteproject">Delete Project <span title="Requires Admin privileges">&#128274;</span></a>
+
+                        <a href="/messages">Messages <span title="Requires Admin privileges">&#128274;</span></a>
+                    
+                    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                    </a>
+                    
+
+                </div>
+            </nav>
+
+
+        <script>
+            function myFunction() {
+                var x = document.getElementById("myTopnav");
+                if (x.className === "topnav") {
+                    x.className += " responsive";
+                } else {
+                    x.className = "topnav";
+                }
+            }</script>

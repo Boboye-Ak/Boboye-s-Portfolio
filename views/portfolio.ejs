@@ -1,0 +1,26 @@
+<%-include("./partials/header") %>
+<div class="container">
+    <h1 class="page-header1">Portfolio</h1>
+    <h2 class="page-header2">Here are some of the projects I've made...</h2>
+    <div class="projectlist">
+    <%  projects.map((project)=>{   %>
+    <div class="project" >
+        <a href=<%=project.projectLink  %> ><img class="project-image"src=<%=project.imgsrc  %>  alt=<%= project.projectName %> ></a>
+        <div>
+            <a  href=<%=project.projectLink%>><p class="project-name"><%= project.projectName %> </p>
+            <a  href=<%=project.gitLink  %> ><p class="project-gitlink">Github<span><img src="./githublogo.png" width="15px" height="15px"></span></img></p></a>
+            <p class="project-description"><%= project.description %></p>
+        </div>   
+    </div>
+
+
+    <%  })  %> 
+    </div>
+    </div>
+
+
+    <script>
+        const active = document.querySelector('a[href="/portfolio"]')
+        active.className += " active"
+    </script>
+<%-include("./partials/footer") %>

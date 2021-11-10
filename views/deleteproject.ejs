@@ -1,0 +1,57 @@
+<%-include("./partials/header") %>
+    <div class="container">
+            <h1 class="page-header1">Delete Project</h1>
+            <h2 class="page-header2">I hope you know what you're doing...</h2>
+            <div class="projectlist">
+                <% projects.map((project)=>{ %>
+                    <div class="project" >
+                        <a href=<%=project.projectLink %> ><img class="project-image" src=<%=project.imgsrc %> alt=<%=
+                                project.projectName %> ></a>
+                        <div>
+                            <a href=<%=project.projectLink%>><p class="project-name">
+                                    <%= project.projectName %>
+                                </p></a>
+                                <p class="project-gitlink">ID: <%= project.id %> </p>
+                                <p class="project-description">
+                                    <%= project.description %>
+                                </p>
+                                
+                        </div>
+                    </div>
+            
+            
+                    <% }) %>
+            </div>
+            <div class="deleteinput">   
+            <form>
+            <input type="number" min="1"  placeholder="Enter ID of target" id="deleteid"></input>
+            <input type="submit" value="Delete"></input>
+            </form>
+            </div>
+    </div>
+
+    <script>
+         let myForm=document.querySelector("form")
+         myForm.addEventListener("submit", async (e)=>{
+             e.preventDefault()
+             let myInput=document.querySelector("#deleteid")
+             let id=parseInt(myInput.value)
+             let res=await fetch("/deleteproject", {
+                 method:"POST",
+                 body:JSON.stringify({id:id}),
+                 headers:{"Content-type":"application/json"}
+             })
+             let data=await res.json()
+             if (data.success){
+                 location.assign("/deleteproject")
+             }
+         })
+       
+    </script>
+    <script>
+        const active = document.querySelector('a[href="/deleteproject"]')
+        active.className += " active"
+    </script>
+
+
+    <%-include("./partials/footer") %>
