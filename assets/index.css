@@ -79,8 +79,10 @@ ul {
 }
 
 .page-footer {
-  text-align: center;
-  color: rgb(50, 50, 51);
+  position: fixed;
+  bottom: 0.5em;
+
+  width: 100%;
 }
 
 .error {
