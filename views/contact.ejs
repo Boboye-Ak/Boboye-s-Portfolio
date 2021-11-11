@@ -47,16 +47,19 @@
                const data=await res.json()
                if (data.success){
                     success.textContent="Message sent successfully."
+                    error.textContent = ""
                }
 
                else{
                     error.textContent = "Please fill all fields correctly"
+                    success.textContent=""
                }
                
           }
 
           else{
                error.textContent="Please fill all fields correctly"
+               success.textContent = ""
 
           }
           
