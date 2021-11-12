@@ -227,6 +227,9 @@ textarea {
 }
 
 @media screen and (max-width: 600px) {
+  .topnav a {
+    float: none;
+  }
   .topnav a.icon {
     display: block;
   }
@@ -239,7 +242,7 @@ textarea {
     display: block;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0.2em 0.2em;
     text-decoration: none;
     font-size: 17px;
   }
