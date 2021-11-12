@@ -89,6 +89,11 @@ ul {
   color: red;
 }
 
+.project-deletebutton {
+  background-color: red;
+  margin-left: 1em;
+}
+
 .success {
   color: rgb(49, 242, 39);
 }
