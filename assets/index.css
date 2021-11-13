@@ -83,6 +83,7 @@ ul {
 @media screen and (min-width: 768px) {
   .project-hidden {
     display: none;
+    transition: display ease-in-out 2s;
   }
 
   .project-shown:hover + div {
@@ -163,12 +164,15 @@ a :hover {
 }
 
 input {
-  height: 3em;
+  height: 3.5em;
+  border-radius: 10px;
+  border-color: rgb(173, 183, 204);
 }
 
 input[type="submit"] {
   background-color: rgb(173, 183, 204);
   font-size: 1.15em;
+  transition: background-color 100ms ease-in-out;
 }
 
 input[type="password"] {
@@ -178,7 +182,7 @@ input[type="password"] {
 }
 
 input[type="submit"]:hover {
-  background-color: rgb(86.5, 91.5, 102);
+  background-color: rgb(113, 133, 154);
 }
 
 .intro {
@@ -204,6 +208,7 @@ input[type="submit"]:hover {
 
 .stack code a {
   color: rgb(256, 256, 256);
+  transition: font-size 100ms ease-in-out;
 }
 
 .stack code:hover {
@@ -214,6 +219,7 @@ input[type="submit"]:hover {
 .topnav {
   background-color: #333;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .topnav a {
@@ -250,10 +256,13 @@ input[type="submit"]:hover {
 
 textarea {
   height: 7em;
+  border-radius: 10px;
+  border-color: rgb(173, 183, 204);
 }
 
 .message {
   background: rgb(210, 210, 222);
+  border-radius: 10px;
 }
 .message-sender {
   text-align: right;
