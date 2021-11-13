@@ -1,11 +1,52 @@
 <%-include("./partials/header") %>
 <div class="container">
     <h1 class="page-header1">About</h1>
-    <h2 class="intro">I am a self taught web developer who enjoys building fast servers for beautiful and responsive websites with NodeJS. I love the MERN stack and aspire to master all of it. I am currently proficient in ExpressJS. I know React but tend to write most of my projects in Vanilla JS.<br /><br /> Chec out my <a href="/portfolio">Portfolio</a></h2>
+    <div class="about">
+    <p>
+        I am a 22 year old self taught web developer who enjoys building fast servers for beautiful and responsive websites with NodeJS. I love the MERN stack and aspire to master all of it. I am currently proficient in ExpressJS. I know React but tend to write most of my projects in Vanilla JS.<br />
+    </p>
+    <p>
+        I just finished my BSc programme in Electrical/Electronics Engineering in the University of Lagos where I taught myself to code while also engaging in curricular activities.
+
+    </p>
+    <p>
+        My tech stack is displayed below <br />
+    </p> 
+    <div class="stack">
+        <code>
+            <a href="https://en.wikipedia.org/wiki/HTML" target="_blank">HTML</a><br />
+        </code>
+        <code>
+            <a href="https://en.wikipedia.org/wiki/CSS" target="_blank">CSS</a><br />
+        </code>
+        <code>
+            <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">Javascript</a> <br />
+        </code>
+        <code>
+            <a target="_blank" href="https://nodejs.dev/">NodeJS</a> <br />
+        </code>
+        <code>
+            <a href="https://expressjs.com/" target="_blank">ExpressJS</a> <br />
+        </code>
+        <code>
+             <a href="https://www.mongodb.com/" target="_blank">MongoDB</a> <br />
+        </code>
+        <code>
+            <a href="https://reactjs.org/" target="_blank">ReactJS</a> <br />
+        </code>
+        <code>
+           <a href="https://www.python.org/" target="_blank">Python(I learned some Data Science)</a><br />
+        </code>
+
+    </div >   
+        <br /> <p style="text-align:center;">Check out my <a href="/portfolio">Portfolio</a></p>
+    </p>
+    </div>
 </div>
 
 <script>
     const active=document.querySelector('a[href="/about"]')
     active.className += " active"
 </script>
+<br/>
 <%-include("./partials/footer") %>
