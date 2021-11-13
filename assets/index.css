@@ -36,6 +36,7 @@ ul {
   border-color: rgb(100, 100, 100);
   border-bottom: none;
   margin-bottom: 0;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .project a {
@@ -57,6 +58,7 @@ ul {
   border-right: rgb(50, 50, 50);
   width: 100%;
   text-align: justify;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .project-gitlink {
@@ -75,6 +77,7 @@ ul {
   margin-top: 0;
   padding-top: 0;
   font-size: small;
+  border-radius: 25px;
 }
 
 @media screen and (min-width: 768px) {
