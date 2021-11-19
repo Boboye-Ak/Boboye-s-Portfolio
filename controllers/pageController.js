@@ -1,8 +1,11 @@
 const jwt=require("jsonwebtoken")
+const nodemailer=require("nodemailer")
 const Project=require("../models/projectModel")
 const Message=require("../models/messageModel")
 const cloudinary=require("../configs/cloudinary")
 const key="boboyeportfoliolock"
+
+
 module.exports.intro_get=(req, res)=>{
     res.render("intro")
 }
