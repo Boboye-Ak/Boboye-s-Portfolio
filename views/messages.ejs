@@ -1,23 +1,21 @@
 <%-include("./partials/header") %>
-    <div class="container">
-        <h1 class="page-header1">Messages</h1>
-        <div class="message-list">
-            <% messages.map((message)=>{ %>
-                <div class="message">
-                    <h3 class="message-content">"<%=message.message %>"</h3>
-                    <h4 class="message-sender"><%= message.name  %> </h4>
-                    <h5 class="sender-email"><%=message.email  %> </h5>
-                    <h6 class="date-sent"><%= message.date %> </h6>
-                </div>
-
-
-            <%  }) %> 
-
-        </div>
+<div class="container">
+  <h1 class="page-header1">Messages</h1>
+  <div class="message-list">
+    <% messages.map((message)=>{ %>
+    <div class="message">
+      <h3 class="message-content">"<%=message.message %>"</h3>
+      <h4 class="message-sender"><%= message.name %></h4>
+      <h5 class="sender-email"><%=message.email %></h5>
+      <h6 class="date-sent"><%= message.date %></h6>
     </div>
 
-    <script>
-        const active = document.querySelector('a[href="/messages"]')
-        active.className += " active"
-    </script>
-    <%-include("./partials/footer") %>
+    <% }) %>
+  </div>
+</div>
+
+<script>
+  const active = document.querySelector('a[href="/messages"]');
+  active.className += " active";
+</script>
+<%-include("./partials/footer") %>

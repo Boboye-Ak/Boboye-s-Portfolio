@@ -1,30 +1,22 @@
 <%-include("./partials/header") %>
-    <div class="container">
-            <h1 class="page-header1">Delete Project</h1>
-            <h2 class="page-header2">I hope you know what you're doing...</h2>
-            <div class="projectlist">
+<div class="container">
+  <h1 class="page-header1">Delete Project</h1>
+  <h2 class="page-header2">I hope you know what you're doing...</h2>
+  <div class="projectlist"></div>
+</div>
 
-            </div>
-           
-    </div>
+<script>
+  let projectListDOM = document.querySelector(".projectlist");
+  const getProjects = async () => {
+    const res = await fetch("/getprojects");
+    const data = await res.json();
+    return data.projects;
+  };
 
-    <script>
-        let projectListDOM=document.querySelector(".projectlist")
-        const getProjects= async()=>{
-            const res=await fetch("/getprojects")
-            const data=await res.json()
-            return data.projects
-
-            
-
-            
-        }
-
-        const printProjects=(projects)=>{
-            let projectlist=projects.map((project)=>{
-                return(` <div class="project">
-                    <a href=${project.projectLink} target="_blank" ><img class="project-image" src=${project.imgsrc} alt=${
-                            project.projectName} ></a>
+  const printProjects = (projects) => {
+    let projectlist = projects.map((project) => {
+      return ` <div class="project">
+                    <a href=${project.projectLink} target="_blank" ><img class="project-image" src=${project.imgsrc} alt=${project.projectName} ></a>
                     <div class="project-label">
                         <a href=${project.projectLink} target="_blank"><p class="project-name">
                                 ${project.projectName}
@@ -37,55 +29,40 @@
                         <p class="project-description">
                             ${project.description}
                         </p>
-                </div>`)
-            })
-            projectListDOM.innerHTML=projectlist
+                </div>`;
+    });
+    projectListDOM.innerHTML = projectlist;
+  };
 
+  const onload = async () => {
+    let projects = await getProjects();
+    printProjects(projects);
+    let buttonList = document.querySelectorAll(".project-deletebutton");
+    buttonList.forEach((button) => {
+      button.addEventListener("click", async (e) => {
+        const idtext = e.target.getAttribute("id");
+        const id = parseInt(idtext);
+        let res = await fetch("/deleteproject", {
+          method: "POST",
+          body: JSON.stringify({ id: id }),
+          headers: { "Content-type": "application/json" },
+        });
+        let data = await res.json();
+        if (data.success) {
+          projects = await getProjects();
+          printProjects(projects);
+          console.log("Deleted Successfully");
         }
+      });
+    });
+  };
 
-        const onload=async()=>{
-            let projects=await getProjects()
-            printProjects(projects)
-            let buttonList=document.querySelectorAll(".project-deletebutton")
-            buttonList.forEach((button)=>{
-                button.addEventListener("click", async(e)=>{
-                    const idtext=e.target.getAttribute("id")
-                    const id=parseInt(idtext)
-                    let res = await fetch("/deleteproject", {
-                        method: "POST",
-                        body: JSON.stringify({ id: id }),
-                        headers: { "Content-type": "application/json" }
-                    })
-                    let data = await res.json()
-                    if (data.success) {
-                        projects = await getProjects()
-                        printProjects(projects)
-                        console.log("Deleted Successfully")
-                    }
-                })
-            })
-            
-            
-        }
+  onload();
+</script>
 
-        onload()
-        
+<script>
+  const active = document.querySelector('a[href="/deleteproject"]');
+  active.className += " active";
+</script>
 
-        
-        
-        
-    </script>
-    
-    
-    
-    
-    
-    
-    
-    <script>
-        const active = document.querySelector('a[href="/deleteproject"]')
-        active.className += " active"
-    </script>
-
-
-    <%-include("./partials/footer") %>
+<%-include("./partials/footer") %>

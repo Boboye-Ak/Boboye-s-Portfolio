@@ -1,35 +1,48 @@
 <%-include("./partials/header") %>
 <div class="container">
-    <h1 class="page-header1">Login</h1>
-    <h2 class="login-message">The page you tried to access requires admin privileges. Admin privileges granted to Boboye alone by Boboye. If you aren't Boboye, you shouldn't be here.<br/><br/> <h2 style="text-align: center;">Login or return to <a href="/intro">Intro</a> or <a href="/portfolio">Portfolio</a> pages.&#128513;</h2></h2>
-    <form class="form">
-        <input type="password" name="password" class="password" placeholder="Password">
-        <div class="error password-error"></div><br/>
-        <input  type="submit" value="Login">
-    </form>
-</div>    
+  <h1 class="page-header1">Login</h1>
+  <h2 class="login-message">
+    The page you tried to access requires admin privileges. Admin privileges
+    granted to Boboye alone by Boboye. If you aren't Boboye, you shouldn't be
+    here.<br /><br />
+    <h2 style="text-align: center">
+      Login or return to <a href="/intro">Intro</a> or
+      <a href="/portfolio">Portfolio</a> pages.&#128513;
+    </h2>
+  </h2>
+  <form class="form">
+    <input
+      type="password"
+      name="password"
+      class="password"
+      placeholder="Password"
+    />
+    <div class="error password-error"></div>
+    <br />
+    <input type="submit" value="Login" />
+  </form>
+</div>
 
-    <script>
-        let form=document.querySelector(".form")
-        let passwordtag=document.querySelector(".password")
-        let error=document.querySelector(".password-error")
-        form.addEventListener("submit", async (e)=>{
-            e.preventDefault()
-            let password=passwordtag.value
-            const res=await fetch("/login", {
-                method:"POST",
-                body:JSON.stringify({password:password}),
-                headers:{"Content-type":"application/json"}
-            })
-            const data=await res.json()
-            console.log(data)
-            if (data.error){
-                error.textContent=data.error
-            }
-            if (data.success){
-                location.assign("/addproject")
-            }
-
-        })
-    </script>
+<script>
+  let form = document.querySelector(".form");
+  let passwordtag = document.querySelector(".password");
+  let error = document.querySelector(".password-error");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    let password = passwordtag.value;
+    const res = await fetch("/login", {
+      method: "POST",
+      body: JSON.stringify({ password: password }),
+      headers: { "Content-type": "application/json" },
+    });
+    const data = await res.json();
+    console.log(data);
+    if (data.error) {
+      error.textContent = data.error;
+    }
+    if (data.success) {
+      location.assign("/addproject");
+    }
+  });
+</script>
 <%-include("./partials/footer") %>

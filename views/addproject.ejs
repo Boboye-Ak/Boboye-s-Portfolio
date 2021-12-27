@@ -1,61 +1,85 @@
 <%-include("./partials/header") %>
 <div class="container">
-    <h1 class="page-header1">Add Project</h1>
-    <form class="form" id="projectform">
-        <input type="text" name="projectName" class="projectName" placeholder="Project Name"><br />
-        <input type="text" name="projectLink" class="projectLink" placeholder="Project Live Link"><br />
-        <input type="text" name="gitLink" class="gitLink" placeholder="Git-Hub Link"><br />
-        <label for="projectscreenshot">Project Screenshot:</label><input type="file" name="myimage" class="screenshot" accept="image/x-png,image/gif,image/jpeg"><br />
-        <textarea name="description" class="description" placeholder="Project Description"></textarea><br />
-        <input type="submit" value="Add Project">
-        <div class="success message"></div>
-    </form>
+  <h1 class="page-header1">Add Project</h1>
+  <form class="form" id="projectform">
+    <input
+      type="text"
+      name="projectName"
+      class="projectName"
+      placeholder="Project Name"
+    /><br />
+    <input
+      type="text"
+      name="projectLink"
+      class="projectLink"
+      placeholder="Project Live Link"
+    /><br />
+    <input
+      type="text"
+      name="gitLink"
+      class="gitLink"
+      placeholder="Git-Hub Link"
+    /><br />
+    <label for="projectscreenshot">Project Screenshot:</label
+    ><input
+      type="file"
+      name="myimage"
+      class="screenshot"
+      accept="image/x-png,image/gif,image/jpeg"
+    /><br />
+    <textarea
+      name="description"
+      class="description"
+      placeholder="Project Description"
+    ></textarea
+    ><br />
+    <input type="submit" value="Add Project" />
+    <div class="success message"></div>
+  </form>
 </div>
-    <script>
-        const goHome=()=>{
-            setTimeout(()=>{location.assign("/portfolio")},3000)
-        }
-        let projectName=document.querySelector(".projectName")
-        let projectLink=document.querySelector(".projectLink")
-        let projectscreenshot=document.querySelector(".screenshot")
-        let description=document.querySelector(".description")
-        let githubLink=document.querySelector(".gitLink")
-        let form=document.querySelector("#projectform")
-        let message=document.querySelector(".message")
-        
+<script>
+  const goHome = () => {
+    setTimeout(() => {
+      location.assign("/portfolio");
+    }, 3000);
+  };
+  let projectName = document.querySelector(".projectName");
+  let projectLink = document.querySelector(".projectLink");
+  let projectscreenshot = document.querySelector(".screenshot");
+  let description = document.querySelector(".description");
+  let githubLink = document.querySelector(".gitLink");
+  let form = document.querySelector("#projectform");
+  let message = document.querySelector(".message");
 
-        form.addEventListener("submit", async (e)=>{
-            e.preventDefault()
-            const name=projectName.value
-            const link=projectLink.value
-            const gitLink=githubLink.value
-            const myimage=projectscreenshot.files[0]
-            const descr=description.value
-            let formData=new FormData()
-            formData.append("name", name)
-            formData.append("link", link)
-            formData.append("myimage", myimage)
-            formData.append("gitLink", gitLink)
-            formData.append("descr", descr)
-            
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = projectName.value;
+    const link = projectLink.value;
+    const gitLink = githubLink.value;
+    const myimage = projectscreenshot.files[0];
+    const descr = description.value;
+    let formData = new FormData();
+    formData.append("name", name);
+    formData.append("link", link);
+    formData.append("myimage", myimage);
+    formData.append("gitLink", gitLink);
+    formData.append("descr", descr);
 
-            let res=await fetch("/addproject", {
-                body:formData,
-                method:"POST"
-            })
-            let data=await res.json()
-            if(data.project){
-                message.textContent='Project "'+data.project+'" has been created successfully'
-                console.log(data)
-                goHome()
-
-            }
-        })
-
-
-    </script>
-    <script>
-        const active = document.querySelector('a[href="/addproject"]')
-        active.className += " active"
-    </script>
+    let res = await fetch("/addproject", {
+      body: formData,
+      method: "POST",
+    });
+    let data = await res.json();
+    if (data.project) {
+      message.textContent =
+        'Project "' + data.project + '" has been created successfully';
+      console.log(data);
+      goHome();
+    }
+  });
+</script>
+<script>
+  const active = document.querySelector('a[href="/addproject"]');
+  active.className += " active";
+</script>
 <%-include("./partials/footer") %>
