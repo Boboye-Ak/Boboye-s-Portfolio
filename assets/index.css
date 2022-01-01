@@ -42,12 +42,7 @@ ul {
   transition: 200ms ease-in-out;
 }
 
-.project:hover {
-  height: 350px;
-  margin-bottom: 2em;
-  width: 32%;
-  text-align: justify;
-}
+
 
 .project-image {
   width: 98.3%;
@@ -105,6 +100,13 @@ ul {
     display: none;
     transition: display ease-in-out 2s;
   }
+  .project:hover {
+    height: 350px;
+    margin-bottom: 2em;
+    width: 32%;
+    text-align: justify;
+  }
+
 
   .project-shown:hover + div {
     display: block;
@@ -387,10 +389,7 @@ textarea:focus {
     text-align: justify;
   }
 
-  .project:hover {
-    width: 1.15em;
-    height: 1.15em;
-  }
+ 
 
   .form {
     width: 70%;
